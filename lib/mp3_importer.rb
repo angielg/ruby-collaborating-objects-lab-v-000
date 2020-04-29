@@ -6,12 +6,9 @@ class MP3Importer
     @path = path
   end
 
-  def self.find_or_create_by_name(title)
-    song = self.find_by_name(title)
-    if song == nil
-      self.create(title)
-    else
-      song
+  def files
+    Dir.chdir do
+      @files = Dir.glob('mp3*')
     end
   end
   
